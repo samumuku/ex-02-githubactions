@@ -28,7 +28,7 @@ jobs:
         uses: chancie86/github-action-version-tag@v0.0.1-pre.25
         with:
           versionPrefix: "v"
-          incrementType: ${{ github.event.inputs.increment_type == 'major' && 'Major' || github.event.inputs.increment_type == 'minor' && 'Minor' || "Patch" }}
+          incrementType: ${{ github.event.inputs.increment_type == 'major' && 'Major' || github.event.inputs.increment_type == 'minor' && 'Minor' || 'Patch' }}
           push: true
 
       - name: Afficher la nouvelle version
