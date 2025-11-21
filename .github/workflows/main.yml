@@ -1,0 +1,30 @@
+name: "Exercice 2 - Automatiser lint, artefacts et versioning avec GitHub Actions"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1) Récupérer le code source
+        uses: actions/checkout@v5
+
+      - name: 2) Installation NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 3) Installation des dépendances
+        run: npm i
+
+      - name: 4) Exécuter le lint
+        run: npm run lint
+
+      - name: 5) Créer un artefact avec le projet
+        uses: actions/upload-artifact@v4
+        with:
+          name: ex-02-githubactions-project
+          path: .
